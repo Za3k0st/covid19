@@ -1,27 +1,32 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { Theme } from '@liquid-design/liquid-design-react';
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
-import AuthProvider from "./contexts/AuthContext";
-import Home from "./Home";
-import Login from "./Login";
-import PrivateRoute from './PrivateRoute';
+import Localization from "./Localization";
+import Dataset from "./Dataset"
+import Statistic from "./Statistic"
+import Nav from "./Nav"
 import './App.css';
 
 function App() {
-  //localStorage.clear()
   return (
-    <AuthProvider>
+    <Theme>
+      <Nav />
+      <div className="App">
         <Router>
           <Switch>
-            <Route path="/login" component={Login} />
-            <PrivateRoute path="/" component={Home} />
+            <Route path="/localization" component={Localization} />
+            <Route path="/dataset" component={Dataset} />
+            <Route path="/" component={Statistic} />
           </Switch>
         </Router>
-    </AuthProvider>)
+      </div>
+    </Theme>)
 }
 
 export default App;
